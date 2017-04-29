@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Spring Boot Thymeleaf Hello World Example</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+</link>
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous"></link>
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+	<!-- 	<span th:text="' WElcome ' + ${name}"></span> -->
+
+	<table id="example1" class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Event name</th>
+				<th>Event Short Description</th>
+				<th>Event Description</th>
+				
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr th:each="event : ${events}">
+				<td th:text="${event.eventName}">1</td>
+				<td><a href="event" th:text="${event.shortDescription}">Title
+						...</a></td>
+				<td th:text="${event.description}">Text ...</td>
+			</tr>
+
+		</tbody>
+		<tfoot>
+			<tr>
+				<th>Event name</th>
+				<th>Event Short Description</th>
+				<th>Event Description</th>
+			
+			</tr>
+		</tfoot>
+	</table>
+
+
+	<p style="size: 20px">Test</p>
+</body>
+</html>
