@@ -33,25 +33,26 @@
 				<th>Event name</th>
 				<th>Event Short Description</th>
 				<th>Event Description</th>
-				
+
 			</tr>
 		</thead>
 
 		<tbody>
 			<tr th:each="event : ${events}">
-				<td th:text="${event.eventName}">1</td>
+				<td><a th:href="@{'/event/'+${event.eventId}}"
+					th:text="${event.eventName}"></a></td>
 				<td><a href="event" th:text="${event.shortDescription}">Title
 						...</a></td>
 				<td th:text="${event.description}">Text ...</td>
 			</tr>
-
+					
 		</tbody>
 		<tfoot>
 			<tr>
 				<th>Event name</th>
 				<th>Event Short Description</th>
 				<th>Event Description</th>
-			
+
 			</tr>
 		</tfoot>
 	</table>
