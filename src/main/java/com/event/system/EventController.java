@@ -26,9 +26,10 @@ public class EventController {
 	}
 
 	@RequestMapping(value = "event", method = RequestMethod.POST)
-	public String eventSubmit(@ModelAttribute Event event) {
-		eventRepository.save(event);
-		return "eventform";
+	public String eventSubmit(@ModelAttribute Event event2) {
+		eventRepository.save(event2);
+		//showEvents(null);
+		return "redirect:/eventlist";
 	}
 
 	@RequestMapping(value = "eventlist", method = RequestMethod.GET)
@@ -58,5 +59,35 @@ public class EventController {
 		return "eventpage";
 	}
 	
+	@RequestMapping(value = "/deleteevent/{id}", method = RequestMethod.GET)
+	public String deleteEventById(@PathVariable("id") Long id) {
+		try {
+			eventRepository.delete(id);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return "redirect:/eventlist";
+	}
 
+	@RequestMapping(value = "/updateevent/{id}", method = RequestMethod.GET)
+	public String updateEventById(Map<String, Object> model, @PathVariable("id") Long id) {
+		Event evnt;
+		evnt = eventService.findByEventId(id);
+
+		model.put("name", evnt);
+		return "updateevent";
+	}
+	
+	@RequestMapping(value = "/updateevent", method = RequestMethod.POST)
+	public String UpdatedEventById(@ModelAttribute Event event) {
+//		Event evnt;
+//		evnt = eventService.findByEventId(id);
+//		
+		
+		eventRepository.save(event);
+		//showEvents(null);
+		return "redirect:/eventlist";
+	}
+	
+	
 }
