@@ -1,5 +1,8 @@
 package com.event.system;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -25,7 +28,10 @@ public class EventSystemApplication implements CommandLineRunner {
 		e1.setShortDescription("Bu Short Description'dır Etkinlik müthiş ya");
 		e1.setDescription("Bu Description'dır Etkinlik bilgileri buradadır... Etkinlik bilgileri buradadır...Etkinlik bilgileri buradadır...");
 		e1.setLocation("Besyol Gloria");
+		//e1.setEventDate(new Date());
 		//e1.setLimit(50);
+		e1.setGuestLimit(50l);
+		e1.setStartHour(new Date());
 		
 		eventRepository.save(e1);
 		
@@ -35,12 +41,20 @@ public class EventSystemApplication implements CommandLineRunner {
 		e1.setDescription("Genis kapsamli etkinlik");
 		e1.setLocation("Besyol");
 		
+		Date dt = new Date();
+		
+		Calendar cl;
+		e1.setGuestLimit(250l);
+		
+		
+		
 		eventRepository.save(e1);
 		e1=new Event();
 		e1.setEventName("Hibernate Semineri2");
 		e1.setShortDescription("Etkinlik");
 		e1.setDescription("Genis kapsamli etkinlik");
 		e1.setLocation("Besyol");
+		e1.setGuestLimit(150l);
 		eventRepository.save(e1);
 		
 		

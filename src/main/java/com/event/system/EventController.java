@@ -2,9 +2,12 @@ package com.event.system;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +29,7 @@ public class EventController {
 	}
 
 	@RequestMapping(value = "event", method = RequestMethod.POST)
-	public String eventSubmit(@ModelAttribute Event event2) {
+	public String eventSubmit(@ModelAttribute @Valid Event event2, BindingResult bindingResult, Model model) {
 		eventRepository.save(event2);
 		//showEvents(null);
 		return "redirect:/eventlist";

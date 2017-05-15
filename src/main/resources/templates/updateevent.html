@@ -19,6 +19,11 @@
 	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
 	crossorigin="anonymous"></link>
 
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
 <!-- Latest compiled and minified JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
@@ -29,6 +34,14 @@ textarea {
 	resize: none;
 }
 </style>
+
+
+<!-- Datetime Picker -->
+
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+
+
 </head>
 
 <nav class="navbar navbar-default">
@@ -105,7 +118,7 @@ textarea {
 				<div class="form-group">
 					<label for="exampleInputEmail1">Event Name</label> <input
 						type="text" class="form-control" id="exampleInputEmail1"
-						placeholder="Event Name"  th:field="*{eventName}"/>
+						placeholder="Event Name" th:field="*{eventName}" />
 					<!--  th:value="${name.eventName}" /> -->
 				</div>
 				<div class="form-group">
@@ -123,6 +136,19 @@ textarea {
 
 
 
+				<div class="form-group">
+					<div class="col-sm-6 date">
+						<label class="col-sm-6">Date</label> <input
+							th:field="*{eventDate}" class="form-control" type="text"
+							id="datepicker" readonly="" />
+					</div>
+				</div>
+
+
+				<input type="text" id="time" data-format="HH:mm"
+					data-template="HH : mm" name="datetime" th:field="*{startHour}" />
+
+
 
 				<button type="submit" class="btn btn-default">Submit</button>
 			</div>
@@ -132,37 +158,38 @@ textarea {
 					<label for="exampleInputEmail1">Event Details</label>
 					<textarea class="form-control" rows="4" cols="50"
 						th:field="*{description}"></textarea>
-					<br /> <label for="exampleInputPassword1">Location</label> <input
+					<br /> <label for="exampleInputPassword1">Guest Limit</label> <input
 						type="text" class="form-control" id="exampleInputPassword1"
-						placeholder="Event Location" />
+						placeholder="Event Location" th:field="*{guestLimit}" />
 				</div>
 
 				<div class="container">
-					<form>
+
 						<div class="radio">
-							<label><input type="radio" name="optradio" />Free</label>
+							<label><input type="radio" name="optradio"
+								th:value="free" th:field="*{paidOrFree}" />Free</label>
 						</div>
 						<div class="radio">
-							<label><input type="radio" name="optradio" />Paid</label>
+							<label><input type="radio" name="optradio"
+								th:value="paid" th:field="*{paidOrFree}" />Paid</label>
 						</div>
-					</form>
+					
 				</div>
 
 				<div class="container">
 					<h2>Type of Event</h2>
 					<p>Please select the correct one:</p>
-					<form>
-						<div class="form-group">
+					<div class="form-group">
 							<label for="sel1">Select list (select one):</label> <select
-								class="form-control" id="sel1">
-								<option>Fun</option>
-								<option>Education</option>
-								<option>Concert</option>
-								<option>Music</option>
+								class="form-control" id="sel1" th:field="*{eventType}">
+								<option th:value="Fun">Fun</option>
+								<option th:value="Education">Education</option>
+								<option th:value="Concert">Concert</option>
+								<option th:value="Music">Music</option>
 							</select> <br />
 
 						</div>
-					</form>
+					
 				</div>
 
 			</div>
@@ -176,6 +203,34 @@ textarea {
 	<br />
 	<br />
 	<br />
+
+
+	<!-- 	<script src="//code.jquery.com/jquery-1.10.2.js"></script> -->
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+	<script src="js/combodate.js"></script>
+
+
+
+
+	<script>
+		$(function() {
+			// 			$("#example1").DataTable();
+			$("#datepicker").datepicker();
+		});
+	</script>
+
+	<script>
+		$(function() {
+			$('#time').combodate({
+				firstItem : 'name', //show 'hour' and 'minute' string at first item of dropdown
+				minuteStep : 1
+			});
+		});
+	</script>
+
+
 
 </body>
 
