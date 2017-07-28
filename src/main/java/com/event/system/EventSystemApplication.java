@@ -8,6 +8,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.event.system.user.model.User;
+
 @SpringBootApplication
 public class EventSystemApplication implements CommandLineRunner {
 
@@ -17,6 +19,9 @@ public class EventSystemApplication implements CommandLineRunner {
 
 	@Autowired 
 	EventRepository eventRepository;
+	
+	@Autowired
+	UserRepository userRepository;
 	
 	@Override
 	public void run(String... arg0) throws Exception {
@@ -57,6 +62,13 @@ public class EventSystemApplication implements CommandLineRunner {
 		e1.setGuestLimit(150l);
 		eventRepository.save(e1);
 		
+		User u1 = new User();
+		u1.setUsername("abc");
+		u1.setEmail("abc@abc.com");
+		u1.setName("isim");
+		u1.setPassword("123456");
+		u1.setRole("user");
+		userRepository.save(u1);
 		
 	}
 }
