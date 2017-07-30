@@ -45,13 +45,17 @@ public class Event {
 	@Temporal(TemporalType.TIME)
 	private Date startHour;
 	
-	@ManyToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL
-//        {
-//                
-//                CascadeType.PERSIST
-//        }
-			)
-	@JoinTable(name = "event_user", joinColumns = @JoinColumn(name = "event_id",updatable = false), inverseJoinColumns = @JoinColumn(name = "user_id",updatable = false))
+//	@ManyToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL
+////        {
+////                
+////                CascadeType.PERSIST
+////        }
+//			)
+//	@JoinTable(name = "event_user", joinColumns = @JoinColumn(name = "event_id",updatable = false), inverseJoinColumns = @JoinColumn(name = "user_id",updatable = false))
+//	private Set<User> registeredUser;
+
+	
+	@ManyToMany(cascade=CascadeType.ALL)
 	private Set<User> registeredUser;
 
 	public Set<User> getRegisteredUser() {
@@ -61,6 +65,8 @@ public class Event {
 	public void setRegisteredUser(Set<User> registeredUser) {
 		this.registeredUser = registeredUser;
 	}
+	
+
 
 	public Date getStartHour() {
 		return startHour;

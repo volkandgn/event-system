@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -65,6 +66,16 @@ public class User {
 //	public void setPosts(Set<Event> posts) {
 //		this.posts = posts;
 //	}
+	
+	@ManyToMany(cascade=CascadeType.ALL, mappedBy="registeredUser")
+	private Set<com.event.system.Event> registeredEvent;
+	
+	public Set<com.event.system.Event> getRegisteredEvent() {
+		return registeredEvent;
+	}
+	public void setRegisteredEvent(Set<com.event.system.Event> registeredEvent) {
+		this.registeredEvent = registeredEvent;
+	}
 	
 	public User(String username,String password,String role) {
 		super();

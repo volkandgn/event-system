@@ -1,6 +1,8 @@
 package com.event.system;
 
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -13,6 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.event.system.user.model.User;
+import com.event.system.user.model.UserService;
+
 @Controller
 public class EventController {
 
@@ -21,6 +26,9 @@ public class EventController {
 	
 	@Autowired
 	EventService eventService;
+	
+	@Autowired
+	UserService userService;
 
 	@RequestMapping(value = "event", method = RequestMethod.GET)
 	public String eventForm(Model model) {
@@ -55,9 +63,25 @@ public class EventController {
 	@RequestMapping(value = "/event/{id}", method = RequestMethod.GET)
 	public String getEvent(Map<String, Object> model, @PathVariable("id") Long id) {
 
+		Set<Event> userEventList = new HashSet<Event>();	
 		Event evnt;
 		evnt = eventService.findByEventId(id);
-
+		
+		String username=userService.findCurrentUserName();
+		
+		User currentUser = userService.findUserByUsername(username);
+		
+		userEventList=currentUser.getRegisteredEvent();
+		
+		if(userEventList.contains(evnt)==true)
+		{
+			System.out.println("BULUNDUUUUUUUUU");
+			model.put("registered", "var");
+		}
+		else model.put("registered", "yok");
+		
+		
+		
 		model.put("name", evnt);
 		return "eventpage";
 	}

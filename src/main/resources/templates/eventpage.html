@@ -156,11 +156,30 @@ textarea {
 	</div>
 
 
-	<p>
-		<a th:href="@{'/register/'+${name.eventId}}"
-			onclick="return confirm('Are you sure to delete this faculty?')"
-			class="btn btn-danger">Register</a>
-	</p>
+	<!-- 	<p> -->
+	<!-- 		<a th:href="@{'/register/'+${name.eventId}}" -->
+	<!-- 			onclick="return confirm('Are you sure to delete this faculty?')" -->
+	<!-- 			class="btn btn-danger">Register</a> -->
+	<!-- 	</p> -->
+
+
+
+	<div th:if="${registered} == var">
+		<p>
+			<a th:href="@{'/unregister/'+${name.eventId}}" th:object="${event}" 
+				onclick="return confirm('Are you sure to delete this faculty?')"
+				class="btn btn-danger">UnRegister</a>
+		</p>
+	</div>
+
+	<div th:if="${registered} == yok">
+
+		<p>
+			<a th:href="@{'/register/'+${name.eventId}}"
+				onclick="return confirm('Are you sure to delete this faculty?')"
+				class="btn btn-danger">Register</a>
+		</p>
+	</div>
 
 
 </body>

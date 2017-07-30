@@ -11,6 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.event.system.user.model.User;
+import com.event.system.user.model.UserService;
 
 @SpringBootApplication
 public class EventSystemApplication implements CommandLineRunner {
@@ -24,6 +25,7 @@ public class EventSystemApplication implements CommandLineRunner {
 	
 	@Autowired
 	UserRepository userRepository;
+	
 	
 	@Override
 	public void run(String... arg0) throws Exception {
@@ -89,6 +91,8 @@ public class EventSystemApplication implements CommandLineRunner {
 		e1.setRegisteredUser(registered);
 		
 		eventRepository.save(e1);
+		
+		//userRepository.save(u1);
 		
 		
 		
