@@ -2,23 +2,32 @@ package com.event.system;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.JoinColumn;
+
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.event.system.user.model.User;
 
 @Entity
 public class Event {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="id")
+	@Column(name="event_id")
 	private Long eventId;
 	private String eventName;
 	private String description;
@@ -35,6 +44,23 @@ public class Event {
 	@DateTimeFormat(pattern = "HH:mm")
 	@Temporal(TemporalType.TIME)
 	private Date startHour;
+	
+	@ManyToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL
+//        {
+//                
+//                CascadeType.PERSIST
+//        }
+			)
+	@JoinTable(name = "event_user", joinColumns = @JoinColumn(name = "event_id",updatable = false), inverseJoinColumns = @JoinColumn(name = "user_id",updatable = false))
+	private Set<User> registeredUser;
+
+	public Set<User> getRegisteredUser() {
+		return registeredUser;
+	}
+
+	public void setRegisteredUser(Set<User> registeredUser) {
+		this.registeredUser = registeredUser;
+	}
 
 	public Date getStartHour() {
 		return startHour;

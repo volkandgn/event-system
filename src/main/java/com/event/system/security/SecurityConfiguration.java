@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.HttpMediaTypeException;
 
 @Configuration
 @EnableWebMvcSecurity
@@ -51,7 +52,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .logoutSuccessUrl("/login")
         .permitAll()
         .and()
-        .rememberMe();
+        .rememberMe()
+        .and().csrf().disable();
+		
+		
+		//http.csrf().disable();
 	}
 
 	@Autowired
@@ -59,6 +64,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			throws Exception {
 		 auth
          .userDetailsService(userDetailsService);
+		 
 	}
+	
+	
 	
 }

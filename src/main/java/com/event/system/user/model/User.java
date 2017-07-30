@@ -3,8 +3,11 @@ package com.event.system.user.model;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,9 +18,12 @@ import javax.validation.constraints.NotNull;
 
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import org.springframework.security.core.GrantedAuthority;
+
+import antlr.debug.Event;
 
 
 @Entity
@@ -26,6 +32,7 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "user_id")
 	private Long id;
 	@NotNull
 	private String username;
@@ -47,6 +54,17 @@ public class User {
 //	@ManyToOne
 //	@JoinColumn(name="departmentId")
 //	private Department department;
+	
+//	@ManyToMany(mappedBy = "tags")
+//	private Set<Event> posts = new HashSet<>();
+//	
+//	
+//	public Set<Event> getPosts() {
+//		return posts;
+//	}
+//	public void setPosts(Set<Event> posts) {
+//		this.posts = posts;
+//	}
 	
 	public User(String username,String password,String role) {
 		super();
