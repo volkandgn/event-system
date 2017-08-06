@@ -10,6 +10,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.event.system.user.model.Role;
 import com.event.system.user.model.User;
 import com.event.system.user.model.UserService;
 
@@ -32,6 +33,14 @@ public class EventSystemApplication implements CommandLineRunner {
 		// TODO Auto-generated method stub
 		
 		
+//		Role role_user = new Role();
+//		role_user.setRole("user");
+		
+//		Set<Role> roles = new HashSet<Role>();
+//		roles.add(role_user);
+		
+		Role role = new Role();
+		role.setRole("user");
 		
 		User u1 = new User();
 		u1.setUsername("abc");
@@ -93,6 +102,7 @@ public class EventSystemApplication implements CommandLineRunner {
 		eventRepository.save(e1);
 		
 		//userRepository.save(u1);
+		//userRepository.save(u2);
 		
 		
 		

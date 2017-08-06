@@ -1,7 +1,10 @@
 package com.event.system.security;
 
+import java.util.Set;
+
 import org.springframework.security.core.authority.AuthorityUtils;
 
+import com.event.system.user.model.Role;
 import com.event.system.user.model.User;
 
 

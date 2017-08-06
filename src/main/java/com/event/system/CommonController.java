@@ -35,10 +35,11 @@ public class CommonController {
 	UserDao userdao;
 	
 	@RequestMapping(value = "login", method = RequestMethod.GET)
-	public String eventForm(Model model) {
+	public String login(Model model) {
 		
 		return "login";
 	}
+	
 	
 	@RequestMapping(value = "/register/{id}", method = RequestMethod.GET)
 	public String registerEvent(Map<String, Object> model, @PathVariable("id") Long id) {

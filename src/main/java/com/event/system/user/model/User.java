@@ -10,6 +10,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
@@ -19,10 +20,15 @@ import javax.validation.constraints.NotNull;
 
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 import org.springframework.security.core.GrantedAuthority;
+
+
 
 import antlr.debug.Event;
 
@@ -70,6 +76,13 @@ public class User {
 	@ManyToMany(cascade=CascadeType.ALL, mappedBy="registeredUser")
 	private Set<com.event.system.Event> registeredEvent;
 	
+	
+//	@ManyToMany(cascade = CascadeType.ALL)
+//	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+//	private Set<Role> roles;
+	
+	
+	
 	public Set<com.event.system.Event> getRegisteredEvent() {
 		return registeredEvent;
 	}
@@ -77,11 +90,11 @@ public class User {
 		this.registeredEvent = registeredEvent;
 	}
 	
-	public User(String username,String password,String role) {
+	public User(String username,String password) {
 		super();
 		this.username = username;
 		this.password = password;
-		this.role = role;
+//		this.role = role;
 	}
 	public User(String name,String surname,Long identityNumber,String email,Date birthDate) {
 		super();
@@ -168,6 +181,7 @@ public class User {
 	public String getUsername() {
 		return username;
 	}
+	
 	public void setUsername(String username) {
 		this.username = username;
 	}

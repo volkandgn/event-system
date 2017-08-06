@@ -36,6 +36,9 @@ public class Event {
 	private Long guestLimit;
 	private String paidOrFree;
 	private String eventType;
+	private double price;
+
+
 
 	// @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	@Temporal(TemporalType.DATE)
@@ -55,7 +58,7 @@ public class Event {
 //	private Set<User> registeredUser;
 
 	
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany(cascade= {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
 	private Set<User> registeredUser;
 
 	public Set<User> getRegisteredUser() {
@@ -148,4 +151,12 @@ public class Event {
 		this.eventType = eventType;
 	}
 
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
 }
