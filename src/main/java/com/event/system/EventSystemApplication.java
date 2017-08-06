@@ -48,7 +48,7 @@ public class EventSystemApplication implements CommandLineRunner {
 		u1.setName("isim");
 		u1.setPassword("123456");
 		u1.setRole("user");
-//		userRepository.save(u1);
+		//userRepository.save(u1);
 		
 		User u2 = new User();
 		u2.setUsername("abc2");
@@ -69,6 +69,7 @@ public class EventSystemApplication implements CommandLineRunner {
 		//e1.setEventDate(new Date());
 		//e1.setLimit(50);
 		e1.setGuestLimit(50l);
+		//e1.setCreatedBy(u1);
 		e1.setStartHour(new Date());
 		
 		eventRepository.save(e1);
@@ -100,9 +101,16 @@ public class EventSystemApplication implements CommandLineRunner {
 		e1.setRegisteredUser(registered);
 		
 		eventRepository.save(e1);
+//		e1.setDescription("dar kapsamli etkinlik");
+//		eventRepository.save(e1);
 		
+		
+		u2.setPassword("654321");
 		//userRepository.save(u1);
+		
 		//userRepository.save(u2);
+		
+		
 		
 		
 		

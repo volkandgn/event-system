@@ -13,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.JoinColumn;
@@ -37,6 +39,7 @@ public class Event {
 	private String paidOrFree;
 	private String eventType;
 	private double price;
+	
 
 
 
@@ -60,6 +63,18 @@ public class Event {
 	
 	@ManyToMany(cascade= {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
 	private Set<User> registeredUser;
+	
+	@ManyToOne
+	private User createdBy;
+	
+
+	public User getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(User createdBy) {
+		this.createdBy = createdBy;
+	}
 
 	public Set<User> getRegisteredUser() {
 		return registeredUser;

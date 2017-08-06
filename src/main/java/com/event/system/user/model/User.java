@@ -23,14 +23,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 import org.springframework.security.core.GrantedAuthority;
 
+import com.event.system.Event;
 
 
-import antlr.debug.Event;
 
 
 @Entity
@@ -74,7 +75,10 @@ public class User {
 //	}
 	
 	@ManyToMany(cascade=CascadeType.ALL, mappedBy="registeredUser")
-	private Set<com.event.system.Event> registeredEvent;
+	private Set<Event> registeredEvent;
+	
+	@OneToMany(mappedBy="createdBy")
+	private Set<Event> event;
 	
 	
 //	@ManyToMany(cascade = CascadeType.ALL)
@@ -83,10 +87,17 @@ public class User {
 	
 	
 	
-	public Set<com.event.system.Event> getRegisteredEvent() {
+	
+	public Set<Event> getRegisteredEvent() {
 		return registeredEvent;
 	}
-	public void setRegisteredEvent(Set<com.event.system.Event> registeredEvent) {
+	public Set<Event> getEvent() {
+		return event;
+	}
+	public void setEvent(Set<Event> event) {
+		this.event = event;
+	}
+	public void setRegisteredEvent(Set<Event> registeredEvent) {
 		this.registeredEvent = registeredEvent;
 	}
 	

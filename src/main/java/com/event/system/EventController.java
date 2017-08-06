@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.event.system.user.model.User;
+import com.event.system.user.model.UserDao;
 import com.event.system.user.model.UserService;
 
 @Controller
@@ -29,6 +30,9 @@ public class EventController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	UserDao userdao;
 
 	@RequestMapping(value = "event", method = RequestMethod.GET)
 	public String eventForm(Model model) {
@@ -38,6 +42,20 @@ public class EventController {
 
 	@RequestMapping(value = "event", method = RequestMethod.POST)
 	public String eventSubmit(@ModelAttribute @Valid Event event2, BindingResult bindingResult, Model model) {
+		
+//		User u1 = new User();
+//		u1.setUsername("abc");
+//		u1.setEmail("abc@abc.com");
+//		u1.setName("isim");
+//		u1.setPassword("123456");
+//		u1.setRole("user");
+//		userdao.save(u1);
+		
+		User u1 = new User();
+		String username = userService.findCurrentUserName();
+		u1= userService.findUserByUsername(username);
+		
+		event2.setCreatedBy(u1);
 		eventRepository.save(event2);
 		//showEvents(null);
 		return "redirect:/eventlist";
