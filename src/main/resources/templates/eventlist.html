@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
-xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -94,60 +94,104 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 
 <body>
-
 	<!-- 	<span th:text="' WElcome ' + ${name}"></span> -->
+	<div class="container">
+		<h2>Event System</h2>
+		<div class="well">Basic Well</div>
+	</div>
 
 	<div class="container">
-		<table id="example1" class="table table-bordered table-striped">
-			<thead>
-				<tr>
-					<th>Event name</th>
-					<th>Event Short Description</th>
-					<th>Event Description</th>
+		<div class="row">
+			<div class="col-md-2" >
+				<form>
 
-				</tr>
-			</thead>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Dropdown <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Actions</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Separated link</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">One more separated link</a></li>
+							
 
-			<tbody>
-				<tr th:each="event : ${events}">
-					<td><a th:href="@{'/event/'+${event.eventId}}"
-						th:text="${event.eventName}"></a></td>
-					<td><a href="event" th:text="${event.shortDescription}">Title
-							...</a></td>
-					<td th:text="${event.description}">Text ...</td>
-					<td><a th:href="@{'/deleteevent/'+${event.eventId}}"
-						onclick="return confirm('Are you sure to delete this faculty?')"
-						class="btn btn-danger">Delete</a></td>
-					<td><a th:href="@{'/updateevent/'+${event.eventId}}"
-						onclick="return confirm('Are you sure to update this faculty?')"
-						class="btn btn-danger">Update</a></td>
-				</tr>
+						</ul>
+						</li>
 
-			</tbody>
-			<tfoot>
-				<tr>
-					<th>Event name</th>
-					<th>Event Short Description</th>
-					<th>Event Description</th>
+						<div>
+							<h6 class="container">Type Of Cash</h6>
+							<div class="checkbox">
+								<label><input type="checkbox" value="" />Free</label>
+							</div>
+							<div class="checkbox">
+								<label><input type="checkbox" value="" />Paid</label>
+							</div>
+						</div>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Category <span class="caret"></span></a>
+						<ul class="dropdown-menu">
 
-				</tr>
-			</tfoot>
-		</table>
+							<li><a href="#">Education</a></li>
+							<li><a href="#">Entertainment</a></li>
+							<li><a href="#">Sport</a></li>
 
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Separated link</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">One more separated link</a></li>
+
+						</ul></li>
+				</form>
+				
+			</div>
+			<div class="col-md-10 table-responsive">
+
+				<table id="example1" class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Event name</th>
+							<th>Event Short Description</th>
+							<th>Event Description</th>
+
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="event : ${events}">
+							<td><a th:href="@{'/event/'+${event.eventId}}"
+								th:text="${event.eventName}"></a></td>
+							<td><a href="event" th:text="${event.shortDescription}">Title
+							</a></td>
+							<td th:text="${event.description}">Text ...</td>
+						</tr>
+
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>Event name</th>
+							<th>Event Short Description</th>
+							<th>Event Description</th>
+
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
 	</div>
 
 	<p style="size: 20px">
-	
 
-	
-	<br/><br/>
-	<div sec:authorize="hasAuthority('user')">
-		Bu Kullanıcın rolü 
-	</div>
-	<div sec:authorize="hasAuthority('admin')">
-		Burayı admin görür
-	</div>
-	
+
+
+		<br />
+		<br />
+	<div sec:authorize="hasAuthority('user')">Bu Kullanıcın rolü</div>
+	<div sec:authorize="hasAuthority('admin')">Burayı admin görür</div>
+
 	</p>
 </body>
 
