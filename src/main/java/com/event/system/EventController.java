@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.event.system.user.model.User;
 import com.event.system.user.model.UserDao;
@@ -66,6 +67,7 @@ public class EventController {
 		model.addAttribute("events", eventRepository.findAll());
 		return "eventlist";
 	}
+	
 	
 //	@RequestMapping(value="/event/{name}", method= RequestMethod.GET)
 //	public String getEvent(Map<String, Object> model,@PathVariable("name") String name){
