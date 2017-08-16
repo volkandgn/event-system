@@ -23,6 +23,9 @@ import javax.persistence.JoinColumn;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.event.system.user.model.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 
 @Entity
 public class Event {
@@ -36,7 +39,7 @@ public class Event {
 	private String shortDescription;
 	private String location;
 	private Long guestLimit;
-	private String paidOrFree;
+	private String paidType;
 	private String eventType;
 	private double price;
 	
@@ -60,7 +63,7 @@ public class Event {
 //	@JoinTable(name = "event_user", joinColumns = @JoinColumn(name = "event_id",updatable = false), inverseJoinColumns = @JoinColumn(name = "user_id",updatable = false))
 //	private Set<User> registeredUser;
 
-	
+	@JsonIgnore
 	@ManyToMany(cascade= {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
 	private Set<User> registeredUser;
 	
@@ -75,7 +78,8 @@ public class Event {
 	public void setCreatedBy(User createdBy) {
 		this.createdBy = createdBy;
 	}
-
+	
+	
 	public Set<User> getRegisteredUser() {
 		return registeredUser;
 	}
@@ -150,12 +154,14 @@ public class Event {
 		this.eventDate = eventDate;
 	}
 
-	public String getPaidOrFree() {
-		return paidOrFree;
+	
+
+	public String getPaidType() {
+		return paidType;
 	}
 
-	public void setPaidOrFree(String paidOrFree) {
-		this.paidOrFree = paidOrFree;
+	public void setPaidType(String paidType) {
+		this.paidType = paidType;
 	}
 
 	public String getEventType() {

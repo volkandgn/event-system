@@ -193,12 +193,12 @@ textarea {
 					<form>
 						<div class="radio">
 							<label><input type="radio" name="optradio"
-								th:value="free" th:field="*{paidOrFree}" id="free"
+								th:value="free" th:field="*{paidType}" id="free"
 								onclick="freeOrPaid()" />Free</label>
 						</div>
 						<div class="radio">
 							<label><input type="radio" name="optradio"
-								th:value="paid" th:field="*{paidOrFree}" id="paid"
+								th:value="paid" th:field="*{paidType}" id="paid"
 								onclick="freeOrPaid()" />Paid</label>
 								
 								<input type="text" id="textt" th:field="*{price}" />

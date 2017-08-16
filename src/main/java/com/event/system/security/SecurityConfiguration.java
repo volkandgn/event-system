@@ -36,9 +36,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-        .antMatchers("/").permitAll()
+        .antMatchers("/","/events/**","/eventlist").permitAll() // /events/** -- /events'e izin vermeyecektir
         .anyRequest().fullyAuthenticated()
         .and()
+//        .authorizeRequests().antMatchers("/events").permitAll().anyRequest().permitAll().and()
         .formLogin()
         .loginPage("/login")
         .defaultSuccessUrl("/eventlist")
@@ -55,6 +56,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .rememberMe()
         .and().csrf().disable();
 		
+		http.authorizeRequests().antMatchers("events").permitAll();
 		
 		//http.csrf().disable();
 	}

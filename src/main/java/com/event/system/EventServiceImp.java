@@ -1,5 +1,7 @@
 package com.event.system;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,18 @@ public class EventServiceImp implements EventService {
 	public Event findByEventId(Long eventId) {
 		// TODO Auto-generated method stub
 		return eventRepository.findByEventId(eventId);
+	}
+
+	@Override
+	public List<Event> findByPaidTypeOrEventType(String freeOrpaid,String typeOfEvent) {
+		List<Event> list = eventRepository.findByPaidTypeOrEventType(freeOrpaid,typeOfEvent);
+		return list;
+	}
+
+	@Override
+	public List<Event> findByTypeOfPaidAndEventType(String freeOrpaid, String typeOfEvent) {
+		List<Event> list = eventRepository.findByPaidTypeAndEventType(freeOrpaid, typeOfEvent);
+		return list;
 	}
 
 }

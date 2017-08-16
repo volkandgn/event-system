@@ -71,6 +71,8 @@ public class EventSystemApplication implements CommandLineRunner {
 		e1.setGuestLimit(50l);
 		//e1.setCreatedBy(u1);
 		e1.setStartHour(new Date());
+		e1.setPaidType("free");
+		e1.setEventType("fun");
 		
 		eventRepository.save(e1);
 		
@@ -79,6 +81,8 @@ public class EventSystemApplication implements CommandLineRunner {
 		e1.setShortDescription("Etkinlik");
 		e1.setDescription("Genis kapsamli etkinlik");
 		e1.setLocation("Besyol");
+		e1.setPaidType("free");
+		e1.setEventType("education");
 		
 		Date dt = new Date();
 		
@@ -94,6 +98,8 @@ public class EventSystemApplication implements CommandLineRunner {
 		e1.setDescription("Genis kapsamli etkinlik");
 		e1.setLocation("Besyol");
 		e1.setGuestLimit(150l);
+		e1.setPaidType("paid");
+		e1.setEventType("education");
 		
 		registered.add(u1);
 		registered.add(u2);

@@ -1,6 +1,8 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+	
+	
 
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -121,15 +123,36 @@
 						</ul>
 						</li>
 
-						<div>
+						<div id="divucret">
 							<h6 class="container">Type Of Cash</h6>
 							<div class="checkbox">
-								<label><input type="checkbox" value="" />Free</label>
+								<label><input type="checkbox" class="searchEvent" name="ucret" id="free" value="" />Free</label>
 							</div>
 							<div class="checkbox">
-								<label><input type="checkbox" value="" />Paid</label>
+								<label><input type="checkbox" class="searchEvent" name="ucret" id="paid" value="" />Paid</label>
 							</div>
 						</div>
+						
+						<div id="typeOfEvent">
+							<h6 class="container">Type Of Event</h6>
+							<div class="radio">
+								<label><input type="radio" class="searchEvent" name="typeofevent" id="Music" value="" />Music</label>
+							</div>
+							<div class="radio">
+								<label><input type="radio" class="searchEvent" name="typeofevent" id="Concert" value="" />Concert</label>
+							</div>
+							<div class="radio">
+								<label><input type="radio" class="searchEvent" name="typeofevent" id="Fun" value="" />Fun</label>
+							</div>
+							<div class="radio">
+								<label><input type="radio" class="searchEvent" name="typeofevent" id="Education" value="" />Education</label>
+							</div>
+							
+						</div>
+						
+						
+						
+						
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Category <span class="caret"></span></a>
@@ -197,45 +220,131 @@
 	
 	</p>
 	<script type="text/javascript">
+	// <![CDATA[
+	
 
-	    $('#ajax').click(function(){ 
-	         $.ajax({ 
+	//$('#free').prop('checked', false);
+		
+	    $('.searchEvent').click(function(){
+	    	
+	    	var id=null;
+	    	
+	    	if($('input[name=typeofevent]:checked')){
+	    	var $radio = $('input[name=typeofevent]:checked');
+	    	var updateDay = $radio.val();
+	    	id = $radio.attr('id');
+	    	}
+	    	
+	    	
+	    	if ($('#free').prop('checked')==true && $('#paid').prop('checked')==false) {
+	    		getFilterEvents("free",id);
+	    	}
+	    	else if($('#free').prop('checked')==false && $('#paid').prop('checked')==true) {
+	    		getFilterEvents("paid",id);
+	    	}
+	    	
+	    	else if($('#free').prop('checked')==false && $('#paid').prop('checked')==false)
+	    	{	
+	    		if(id==null){
+	    			getAllEvents();
+	    		}
+	    		else
+	    			{
+	    			getFilterEvents(id,null);
+	    			}
+	    	}
+	    	
+	    	else if($('#free').prop('checked')==true && $('#paid').prop('checked')==true && id == null) {
+	    		getAllEvents();
+	    	}
+	    	
+	    	else if($('#free').prop('checked')==true && $('#paid').prop('checked')==true) {
+	    		getFilterEvents(id,null);
+	    	}
+	    	
+	    	else{
+	    		getAllEvents();
+	    	}
+	    	
+	    });
+	    
+	    
+// 	    if ($('#'+id).prop('checked')) {
+	    
+	    function getAllEvents(){
+	    	   $.ajax({ 
+	  	             type: "GET",
+	  	             dataType: "json",
+	  	             url: "http://localhost:8081/events",
+	  	             success: function(data){     
+	  	            	createElements(data);
+	  	             }
+	  	         });
+	    }
+	    
+		function getFilterEvents(firstFilter,SecondFilter){
+			
+			if(SecondFilter==null)
+				{
+				
+				 $.ajax({ 
+		             type: "GET",
+		             dataType: "json",
+		             url: "http://localhost:8081/events/"+firstFilter,
+		             success: function(data){     
+		            	 createElements(data);
+		             }
+		         });
+				
+				}
+			else
+		    $.ajax({ 
 	             type: "GET",
 	             dataType: "json",
-	             url: "http://localhost:8081/events",
+	             url: "http://localhost:8081/events/"+firstFilter+"/"+SecondFilter,
 	             success: function(data){     
-	            	 	var eventListDiv = document.getElementById("eventListDiv");
-		                eventListDiv.innerHTML="";
-		                
-		                for (var i in data) {
-		                	var d = data[i];
-		                	var tr = document.createElement("tr");
-		                	var a = document.createElement("a");
-			                var name = document.createElement("td");
-			                a.innerText = d.name;
-			                a.setAttribute('href', "http://localhost:8081/event/1");
-			                name.appendChild(a);
-			                
-			                var short_description = document.createElement("td");
-			                short_description.innerText = d.short_description;
-			                
-			                var description = document.createElement("td");
-			                description.innerText = d.description;
-			                
-			                tr.appendChild(name);
-			                tr.appendChild(short_description);
-			                tr.appendChild(description);
-			                eventListDiv.appendChild(tr);
-	                	}
+	            	 createElements(data);
 	             }
 	         });
-	    });
+	    	
+	    }
+	    
+		
+		function createElements(data)
+		{
+			var eventListDiv = document.getElementById("eventListDiv");
+            eventListDiv.innerHTML="";
+            
+            for (var i in data) {
+            	var d = data[i];
+            	var tr = document.createElement("tr");
+            	var a = document.createElement("a");
+                var name = document.createElement("td");
+                a.innerText = d.eventName;
+                a.setAttribute('href', "http://localhost:8081/event/"+d.eventId);
+                name.appendChild(a);
+                
+                var short_description = document.createElement("td");
+                short_description.innerText = d.shortDescription;
+               
+                
+                var description = document.createElement("td");
+                description.innerText = d.description;
+                
+                tr.appendChild(name);
+                tr.appendChild(short_description);
+                tr.appendChild(description);
+                eventListDiv.appendChild(tr);
+        	}
+			
+		}
+		
 	    
 	    $('#clear').click(function(){ 
 	    	var icerik = document.getElementById("icerik")
             icerik.innerText = "";
 	    });
-
+	 // ]]>
 	</script>
 </body>
 
