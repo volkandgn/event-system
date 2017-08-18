@@ -67,12 +67,16 @@
 
 					</ul></li>
 			</ul>
-			<form class="navbar-form navbar-right">
+			
+			
+			<div class="navbar-form navbar-right" >
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search" />
+					<input  type="text" class="form-control" name="search" id="ssearch" placeholder="Search" />
 				</div>
-				<button type="submit" class="btn btn-default">Search</button>
-			</form>
+				<button type="submit" class="btn btn-default" onclick="redirect()" >Search</button>
+			</div>
+			
+			
 
 			<ul class="nav navbar-nav navbar-right">
 				<li><a th:href="@{/event}">Create Event</a></li>
@@ -344,6 +348,18 @@
 	    	var icerik = document.getElementById("icerik")
             icerik.innerText = "";
 	    });
+	    
+	    
+	    function redirect()
+	    {
+	    	var value = document.getElementById("ssearch").value;
+	    	window.location.href="/q/" + value;
+	    }
+	    
+	   
+	    
+	    
+	    
 	 // ]]>
 	</script>
 </body>

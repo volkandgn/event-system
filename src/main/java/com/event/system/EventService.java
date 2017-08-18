@@ -8,5 +8,6 @@ public interface EventService {
 	 Event findByEventId(Long eventId);
 	 List<Event> findByPaidTypeOrEventType(String freeOrpaid,String typeOfEvent);
 	 List<Event> findByTypeOfPaidAndEventType(String freeOrpaid,String typeOfEvent);
+	 List<Event> findBySearch(String eventName, String description, String shortDescription,String eventType);
 
 }

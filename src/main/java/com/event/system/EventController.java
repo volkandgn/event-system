@@ -1,6 +1,7 @@
 package com.event.system;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -150,6 +151,24 @@ public class EventController {
 		model.addAttribute("events", userEventList);
 		return "myevents";
 	}
+	
+	@RequestMapping(value = "q/{search}", method = RequestMethod.GET)
+	public String searchEvents(Model model,@PathVariable("search") String searchParameter) {
+		
+//		List<Event> allEvents = (List<Event>) eventRepository.findAll();
+//		
+//		List<Event> list = (List<Event>) eventRepository.findAll();
+//		
+//		for (Event o : allEvents) {
+//			
+//			
+//		   
+//		}
+		model.addAttribute("events", eventService.findBySearch(searchParameter, searchParameter, searchParameter, searchParameter));
+		
+		return "eventlist";
+	}
+	
 	
 	
 }

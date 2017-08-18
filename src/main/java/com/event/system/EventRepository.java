@@ -10,4 +10,5 @@ public interface EventRepository extends CrudRepository<Event, Long> {
 	 Event findByEventId(Long eventId);
 	 List<Event> findByPaidTypeOrEventType(String freeOrpaid,String typeOfEvent);
 	 List<Event> findByPaidTypeAndEventType(String freeOrpaid,String typeOfEvent);
+	 List<Event> findByEventNameContainingOrDescriptionContainingOrShortDescriptionContainingOrEventTypeContaining(String eventName, String description, String shortDescription,String eventType);
 }

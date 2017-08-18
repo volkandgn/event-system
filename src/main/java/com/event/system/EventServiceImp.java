@@ -35,4 +35,10 @@ public class EventServiceImp implements EventService {
 		return list;
 	}
 
+	@Override
+	public List<Event> findBySearch(String eventName, String description, String shortDescription, String eventType) {
+		List<Event> list= eventRepository.findByEventNameContainingOrDescriptionContainingOrShortDescriptionContainingOrEventTypeContaining(eventName, description, shortDescription, eventType);
+		return list;
+	}
+
 }
