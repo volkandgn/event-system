@@ -169,6 +169,20 @@ public class EventController {
 		return "eventlist";
 	}
 	
+	@RequestMapping(value = "createdevents", method = RequestMethod.GET)
+	public String showMyCreatedEvents(Model model) {
+		
+		Set<Event> userEventList = new HashSet<Event>();	
+		
+		String username=userService.findCurrentUserName();
+		
+		User currentUser = userService.findUserByUsername(username);
+		
+		userEventList=currentUser.getEvent();
+		
+		model.addAttribute("events", userEventList);
+		return "myevents";
+	}
 	
 	
 }
