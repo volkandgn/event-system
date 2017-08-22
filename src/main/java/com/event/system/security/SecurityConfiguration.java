@@ -36,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-        .antMatchers("/","/events/**","/eventlist").permitAll() // /events/** -- /events'e izin vermeyecektir
+        .antMatchers("/","/events/**","/eventlist","/registration").permitAll() //- /events/ -> /events 'e izin vermeyecektir. /events/* events'i dahil etmeden sonraya izin verir. /events/** events'i da dahil eder.                            
         .anyRequest().fullyAuthenticated()
         .and()
 //        .authorizeRequests().antMatchers("/events").permitAll().anyRequest().permitAll().and()

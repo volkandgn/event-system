@@ -27,6 +27,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.core.GrantedAuthority;
 
 import com.event.system.Event;
@@ -43,14 +45,17 @@ public class User {
 	@Column(name = "user_id")
 	private Long id;
 	@NotNull
+	@NotEmpty(message = "*Please provide an username")
 	private String username;
 	@NotNull
+	@Length(min = 5, message = "*Your password must have at least 5 characters")
 	private String password;
-	@NotNull
+//	@NotNull
 	private String role;
 	private String name;
 	private String surname;
 	private Long identityNumber;
+	@NotEmpty(message = "*Please provide an email")
 	private String email;
 	@Temporal(TemporalType.DATE)
 	private Date birthDate;
