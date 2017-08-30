@@ -46,6 +46,7 @@ public class EventSystemApplication implements CommandLineRunner {
 		u1.setUsername("abc");
 		u1.setEmail("abc@abc.com");
 		u1.setName("isim");
+		u1.setSurname("soyisim");
 		u1.setPassword("123456");
 		u1.setRole("user");
 		//userRepository.save(u1);
