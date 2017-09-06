@@ -43,18 +43,19 @@ public class EventSystemApplication implements CommandLineRunner {
 		role.setRole("user");
 		
 		User u1 = new User();
-		u1.setUsername("abc");
-		u1.setEmail("abc@abc.com");
-		u1.setName("isim");
-		u1.setSurname("soyisim");
+		u1.setUsername("admin");
+		u1.setEmail("admin@eventsystem.com");
+		u1.setName("Volkan");
+		u1.setSurname("Dogan");
 		u1.setPassword("123456");
-		u1.setRole("user");
+		u1.setRole("admin");
 		//userRepository.save(u1);
 		
 		User u2 = new User();
-		u2.setUsername("abc2");
-		u2.setEmail("abc2@abc.com");
-		u2.setName("isim2");
+		u2.setUsername("user");
+		u2.setEmail("user1@eventsystem.com");
+		u2.setName("Ugurcan");
+		u2.setSurname("Lacin");
 		u2.setPassword("123456");
 		u2.setRole("user");
 		
@@ -63,10 +64,10 @@ public class EventSystemApplication implements CommandLineRunner {
 		Event e1 = new Event();
 			
 		
-		e1.setEventName("Boş yapma etkinliğidir");
-		e1.setShortDescription("Bu Short Description'dır Etkinlik müthiş ya");
-		e1.setDescription("Bu Description'dır Etkinlik bilgileri buradadır... Etkinlik bilgileri buradadır...Etkinlik bilgileri buradadır...");
-		e1.setLocation("Besyol Gloria");
+		e1.setEventName("Event-1");
+		e1.setShortDescription("Event-1 Short Description");
+		e1.setDescription("Event-1 Description...");
+		e1.setLocation("Event-1 Location");
 		//e1.setEventDate(new Date());
 		//e1.setLimit(50);
 		e1.setGuestLimit(50l);
@@ -78,10 +79,10 @@ public class EventSystemApplication implements CommandLineRunner {
 		eventRepository.save(e1);
 		
 		e1=new Event();
-		e1.setEventName("Hibernate Semineri1");
-		e1.setShortDescription("Etkinlik");
-		e1.setDescription("Genis kapsamli etkinlik");
-		e1.setLocation("Besyol");
+		e1.setEventName("Event-2");
+		e1.setShortDescription("Event-2 Short Description");
+		e1.setDescription("Event-2 Description...");
+		e1.setLocation("Event-2 Location");
 		e1.setPaidType("free");
 		e1.setEventType("education");
 		
@@ -94,20 +95,28 @@ public class EventSystemApplication implements CommandLineRunner {
 		
 		eventRepository.save(e1);
 		e1=new Event();
-		e1.setEventName("Hibernate Semineri2");
-		e1.setShortDescription("Etkinlik");
-		e1.setDescription("Genis kapsamli etkinlik");
-		e1.setLocation("Besyol");
+		e1.setEventName("Event-3");
+		e1.setShortDescription("Event-3 Short Description");
+		e1.setDescription("Event-3 Description...");
+		e1.setLocation("Event-3 Location");
 		e1.setGuestLimit(150l);
 		e1.setPaidType("paid");
 		e1.setEventType("education");
 		
-		registered.add(u1);
-		registered.add(u2);
+//		registered.add(u1); 
+//		registered.add(u2);
+//		
+//		e1.setRegisteredUser(registered);
 		
-		e1.setRegisteredUser(registered);
+		userRepository.save(u1);
+		userRepository.save(u2);
 		
 		eventRepository.save(e1);
+		
+		
+		
+		
+		
 //		e1.setDescription("dar kapsamli etkinlik");
 //		eventRepository.save(e1);
 		
@@ -117,11 +126,65 @@ public class EventSystemApplication implements CommandLineRunner {
 		
 		//userRepository.save(u2);
 		
+		e1=new Event();
+		e1.setEventName("Event-4");
+		e1.setShortDescription("Event-4 Short Description");
+		e1.setDescription("Event-4 Description...");
+		e1.setLocation("Event-4 Location");
+		e1.setGuestLimit(150l);
+		e1.setPaidType("paid");
+		e1.setEventType("education");
+		eventRepository.save(e1);
 		
+		e1=new Event();
+		e1.setEventName("Event-5");
+		e1.setShortDescription("Event-5 Short Description");
+		e1.setDescription("Event-5 Description...");
+		e1.setLocation("Event-5 Location");
+		e1.setGuestLimit(150l);
+		e1.setPaidType("paid");
+		e1.setEventType("education");
+		eventRepository.save(e1);
 		
+		e1=new Event();
+		e1.setEventName("Event-6");
+		e1.setShortDescription("Event-6 Short Description");
+		e1.setDescription("Event-6 Description...");
+		e1.setLocation("Event-6 Location");
+		e1.setGuestLimit(150l);
+		e1.setPaidType("free");
+		e1.setEventType("fun");
+		eventRepository.save(e1);
 		
+		e1=new Event();
+		e1.setEventName("Event-7");
+		e1.setShortDescription("Event-7 Short Description");
+		e1.setDescription("Event-7 Description...");
+		e1.setLocation("Event-7 Location");
+		e1.setGuestLimit(150l);
+		e1.setPaidType("paid");
+		e1.setEventType("sport");
+		eventRepository.save(e1);
 		
+		e1=new Event();
+		e1.setEventName("Event-8");
+		e1.setShortDescription("Event-8 Short Description");
+		e1.setDescription("Event-8 Description...");
+		e1.setLocation("Event-8 Location");
+		e1.setGuestLimit(150l);
+		e1.setPaidType("free");
+		e1.setEventType("music");
+		eventRepository.save(e1);
 		
+		e1=new Event();
+		e1.setEventName("Event-9");
+		e1.setShortDescription("Event-9 Short Description");
+		e1.setDescription("Event-9 Description...");
+		e1.setLocation("Event-9 Location");
+		e1.setGuestLimit(150l);
+		e1.setPaidType("free");
+		e1.setEventType("sport");
+		eventRepository.save(e1);
 		
 	}
 }

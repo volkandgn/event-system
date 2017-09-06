@@ -45,6 +45,7 @@ public class UserController {
 			return "registration";
 		} else {
 			model.addAttribute("successMessage", "User has been registered successfully");
+			user.setRole("user");
 			userRepository.save(user);
 			return "registration";
 		}

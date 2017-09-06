@@ -169,7 +169,7 @@ public class EventController {
 		return "eventlist";
 	}
 	
-	@RequestMapping(value = "createdevents", method = RequestMethod.GET)
+	@RequestMapping(value = "/createdevents", method = RequestMethod.GET)
 	public String showMyCreatedEvents(Model model) {
 		
 		Set<Event> userEventList = new HashSet<Event>();	
@@ -181,7 +181,7 @@ public class EventController {
 		userEventList=currentUser.getEvent();
 		
 		model.addAttribute("events", userEventList);
-		return "myevents";
+		return "mycreatedevents";
 	}
 	
 	

@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-	
-	
+
+
 
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -51,32 +51,33 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-<!-- 				<li><a href="#">Find Events <span class="sr-only">(current)</span></a></li> -->
+				<!-- 				<li><a href="#">Find Events <span class="sr-only">(current)</span></a></li> -->
 				<li><a th:href="@{/eventlist}">Events</a></li>
-<!-- 				<li class="dropdown"><a href="#" class="dropdown-toggle" -->
-<!-- 					data-toggle="dropdown" role="button" aria-haspopup="true" -->
-<!-- 					aria-expanded="false">.... <span class="caret"></span></a> -->
-<!-- 					<ul class="dropdown-menu"> -->
-<!-- 						<li><a href="#">Actions</a></li> -->
-<!-- 						<li><a href="#">zzzzzzs</a></li> -->
-<!-- 						<li><a href="#">Something else here</a></li> -->
-<!-- 						<li role="separator" class="divider"></li> -->
-<!-- 						<li><a href="#">Separated link</a></li> -->
-<!-- 						<li role="separator" class="divider"></li> -->
-<!-- 						<li><a href="#">One more separated link</a></li> -->
+				<!-- 				<li class="dropdown"><a href="#" class="dropdown-toggle" -->
+				<!-- 					data-toggle="dropdown" role="button" aria-haspopup="true" -->
+				<!-- 					aria-expanded="false">.... <span class="caret"></span></a> -->
+				<!-- 					<ul class="dropdown-menu"> -->
+				<!-- 						<li><a href="#">Actions</a></li> -->
+				<!-- 						<li><a href="#">zzzzzzs</a></li> -->
+				<!-- 						<li><a href="#">Something else here</a></li> -->
+				<!-- 						<li role="separator" class="divider"></li> -->
+				<!-- 						<li><a href="#">Separated link</a></li> -->
+				<!-- 						<li role="separator" class="divider"></li> -->
+				<!-- 						<li><a href="#">One more separated link</a></li> -->
 
-<!-- 					</ul></li> -->
+				<!-- 					</ul></li> -->
 			</ul>
-			
-			
-			<div class="navbar-form navbar-right" >
+
+
+			<div class="navbar-form navbar-right">
 				<div class="form-group">
-					<input  type="text" class="form-control" name="search" id="ssearch" placeholder="Search" />
+					<input type="text" class="form-control" name="search" id="ssearch"
+						placeholder="Search" />
 				</div>
-				<button type="submit" class="btn btn-default" onclick="redirect()" >Search</button>
+				<button type="submit" class="btn btn-default" onclick="redirect()">Search</button>
 			</div>
-			
-			
+
+
 
 			<ul class="nav navbar-nav navbar-right">
 				<li><a th:href="@{/event}">Create Event</a></li>
@@ -84,7 +85,7 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">User <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Action</a></li>
+						<li><a th:href="@{/myuser}">User Page</a></li>
 						<li><a th:href="@{/myevents}">Registered Events</a></li>
 						<li><a th:href="@{/createdevents}">My Created Events</a></li>
 						<li role="separator" class="divider"></li>
@@ -103,76 +104,53 @@
 	<!-- 	<span th:text="' WElcome ' + ${name}"></span> -->
 	<div class="container">
 		<h2>Event System</h2>
-		<div class="well">All events are listed. Filters can be used and event can be registered by users (login necessary)</div>
+		<div class="well">All events are listed. Filters can be used and
+			event can be registered by users (login necessary)</div>
 	</div>
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-2" >
+			<div class="col-md-2">
 				<form>
 
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Dropdown <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Actions</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">Separated link</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">One more separated link</a></li>
-							
-						</ul>
-						</li>
+					
 
-						<div id="divucret">
-							<h6 class="container">Type Of Cash</h6>
-							<div class="checkbox">
-								<label><input type="checkbox" class="searchEvent" name="ucret" id="free" value="" />Free</label>
-							</div>
-							<div class="checkbox">
-								<label><input type="checkbox" class="searchEvent" name="ucret" id="paid" value="" />Paid</label>
-							</div>
+					<div id="divucret">
+						<h4 class="container"><b>Type Of Cash</b></h4>
+						<div class="checkbox">
+							<label><input type="checkbox" class="searchEvent"
+								name="ucret" id="free" value="" />Free</label>
 						</div>
-						
-						<div id="typeOfEvent">
-							<h6 class="container">Type Of Event</h6>
-							<div class="radio">
-								<label><input type="radio" class="searchEvent" name="typeofevent" id="Music" value="" />Music</label>
-							</div>
-							<div class="radio">
-								<label><input type="radio" class="searchEvent" name="typeofevent" id="Concert" value="" />Concert</label>
-							</div>
-							<div class="radio">
-								<label><input type="radio" class="searchEvent" name="typeofevent" id="Fun" value="" />Fun</label>
-							</div>
-							<div class="radio">
-								<label><input type="radio" class="searchEvent" name="typeofevent" id="Education" value="" />Education</label>
-							</div>
-							
+						<div class="checkbox">
+							<label><input type="checkbox" class="searchEvent"
+								name="ucret" id="paid" value="" />Paid</label>
 						</div>
-						
-						
-						
-						
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Category <span class="caret"></span></a>
-						<ul class="dropdown-menu">
+					</div>
 
-							<li><a href="#">Education</a></li>
-							<li><a href="#">Entertainment</a></li>
-							<li><a href="#">Sport</a></li>
+					<div id="typeOfEvent">
+						<h4 class="container"><b>Type Of Event</b></h4>
+						<div class="radio">
+							<label><input type="radio" class="searchEvent"
+								name="typeofevent" id="Music" value="" />Music</label>
+						</div>
+						<div class="radio">
+							<label><input type="radio" class="searchEvent"
+								name="typeofevent" id="Sport" value="" />Sport</label>
+						</div>
+						<div class="radio">
+							<label><input type="radio" class="searchEvent"
+								name="typeofevent" id="Fun" value="" />Fun</label>
+						</div>
+						<div class="radio">
+							<label><input type="radio" class="searchEvent"
+								name="typeofevent" id="Education" value="" />Education</label>
+						</div>
 
-							<li role="separator" class="divider"></li>
-							<li><a href="#">Separated link</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">One more separated link</a></li>
+					</div>
 
-						</ul></li>
+					
 				</form>
-				
+
 			</div>
 			<div class="col-md-10 table-responsive">
 
@@ -181,7 +159,8 @@
 						<tr>
 							<th>Event name</th>
 							<th>Event Short Description</th>
-							<th>Event Description</th>
+							<th>Type Of event</th>
+							<th>Free Or Paid</th>
 
 						</tr>
 					</thead>
@@ -190,9 +169,19 @@
 						<tr th:each="event : ${events}">
 							<td><a th:href="@{'/event/'+${event.eventId}}"
 								th:text="${event.eventName}"></a></td>
-							<td><a href="event" th:text="${event.shortDescription}">Title
-							</a></td>
-							<td th:text="${event.description}">Text ...</td>
+							<td th:text="${event.shortDescription}"></td>
+							<td th:text="${event.eventType}"></td>
+							<td th:text="${event.paidType}"></td>
+							<div sec:authorize="hasAuthority('admin')">
+
+								<td><a th:href="@{'/deleteevent/'+${event.eventId}}"
+									onclick="return confirm('Are you sure to delete this event?')"
+									class="btn btn-danger">Delete</a></td>
+								<td><a th:href="@{'/updateevent/'+${event.eventId}}"
+									onclick="return confirm('Are you sure to update this event?')"
+									class="btn btn-danger">Update</a></td>
+
+							</div>
 						</tr>
 
 					</tbody>
@@ -200,7 +189,8 @@
 						<tr>
 							<th>Event name</th>
 							<th>Event Short Description</th>
-							<th>Event Description</th>
+							<th>Type Of event</th>
+							<th>Free Or Paid</th>
 
 						</tr>
 					</tfoot>
@@ -213,172 +203,165 @@
 
 
 
-		<br />
-		<br />
-	<div sec:authorize="hasAuthority('user')">Bu Kullanıcın rolü</div>
-	<div sec:authorize="hasAuthority('admin')">Burayı admin görür</div>
-	<button id="ajax">ajax call</button>
-	<button id="clear">clear</button>
-	<div id="icerik"></div>
-	
-	</p>
-	<script type="text/javascript">
-	// <![CDATA[
+		<br /> <br />
 	
 
-	//$('#free').prop('checked', false);
-		
-	    $('.searchEvent').click(function(){
-	    	
-	    	var id=null;
-	    	
-	    	if($('input[name=typeofevent]:checked')){
-	    	var $radio = $('input[name=typeofevent]:checked');
-	    	var updateDay = $radio.val();
-	    	id = $radio.attr('id');
-	    	}
-	    	
-	    	
-	    	if ($('#free').prop('checked')==true && $('#paid').prop('checked')==false) {
-	    		getFilterEvents("free",id);
-	    	}
-	    	else if($('#free').prop('checked')==false && $('#paid').prop('checked')==true) {
-	    		getFilterEvents("paid",id);
-	    	}
-	    	
-	    	else if($('#free').prop('checked')==false && $('#paid').prop('checked')==false)
-	    	{	
-	    		if(id==null){
-	    			getAllEvents();
-	    		}
-	    		else
-	    			{
-	    			getFilterEvents(id,null);
-	    			}
-	    	}
-	    	
-	    	else if($('#free').prop('checked')==true && $('#paid').prop('checked')==true && id == null) {
-	    		getAllEvents();
-	    	}
-	    	
-	    	else if($('#free').prop('checked')==true && $('#paid').prop('checked')==true) {
-	    		getFilterEvents(id,null);
-	    	}
-	    	
-	    	else{
-	    		getAllEvents();
-	    	}
-	    	
-	    });
-	    
-	    
-// 	    if ($('#'+id).prop('checked')) {
-	    
-	    function getAllEvents(){
-	    	   $.ajax({ 
-	  	             type: "GET",
-	  	             dataType: "json",
-	  	             url: "http://localhost:8081/events",
-	  	             success: function(data){     
-	  	            	createElements(data);
-	  	             }
-	  	         });
-	    }
-	    
-		function getFilterEvents(firstFilter,SecondFilter){
-			
-			if(SecondFilter==null)
-				{
-				
-				 $.ajax({ 
-		             type: "GET",
-		             dataType: "json",
-		             url: "http://localhost:8081/events/"+firstFilter,
-		             success: function(data){     
-		            	 createElements(data);
-		             }
-		         });
-				
+	<div id="icerik"></div>
+
+	</p>
+	<script type="text/javascript">
+		// <![CDATA[
+
+		//$('#free').prop('checked', false);
+
+		$('.searchEvent')
+				.click(
+						function() {
+
+							var id = null;
+
+							if ($('input[name=typeofevent]:checked')) {
+								var $radio = $('input[name=typeofevent]:checked');
+								var updateDay = $radio.val();
+								id = $radio.attr('id');
+							}
+
+							if ($('#free').prop('checked') == true
+									&& $('#paid').prop('checked') == false) {
+								getFilterEvents("free", id);
+							} else if ($('#free').prop('checked') == false
+									&& $('#paid').prop('checked') == true) {
+								getFilterEvents("paid", id);
+							}
+
+							else if ($('#free').prop('checked') == false
+									&& $('#paid').prop('checked') == false) {
+								if (id == null) {
+									getAllEvents();
+								} else {
+									getFilterEvents(id, null);
+								}
+							}
+
+							else if ($('#free').prop('checked') == true
+									&& $('#paid').prop('checked') == true
+									&& id == null) {
+								getAllEvents();
+							}
+
+							else if ($('#free').prop('checked') == true
+									&& $('#paid').prop('checked') == true) {
+								getFilterEvents(id, null);
+							}
+
+							else {
+								getAllEvents();
+							}
+
+						});
+
+		// 	    if ($('#'+id).prop('checked')) {
+
+		function getAllEvents() {
+			$.ajax({
+				type : "GET",
+				dataType : "json",
+				url : "http://localhost:8081/events",
+				success : function(data) {
+					createElements(data);
 				}
-			else
-		    $.ajax({ 
-	             type: "GET",
-	             dataType: "json",
-	             url: "http://localhost:8081/events/"+firstFilter+"/"+SecondFilter,
-	             success: function(data){     
-	            	 createElements(data);
-	             }
-	         });
-	    	
-	    }
-	    
-		
-		function createElements(data)
-		{
-			var eventListDiv = document.getElementById("eventListDiv");
-            eventListDiv.innerHTML="";
-            
-            for (var i in data) {
-            	var d = data[i];
-            	var tr = document.createElement("tr");
-            	var a = document.createElement("a");
-                var name = document.createElement("td");
-                a.innerText = d.eventName;
-                a.setAttribute('href', "http://localhost:8081/event/"+d.eventId);
-                name.appendChild(a);
-                
-                var short_description = document.createElement("td");
-                short_description.innerText = d.shortDescription;
-               
-                
-                var description = document.createElement("td");
-                description.innerText = d.description;
-                
-                tr.appendChild(name);
-                tr.appendChild(short_description);
-                tr.appendChild(description);
-                eventListDiv.appendChild(tr);
-        	}
-			
+			});
 		}
-		
-	    
-	    $('#clear').click(function(){ 
-	    	var icerik = document.getElementById("icerik")
-            icerik.innerText = "";
-	    });
-	    
-	    
-	    function redirect()
-	    {
-	    	var value = document.getElementById("ssearch").value;
-	    	window.location.href="/q/" + value;
-	    }
-	    
-	    function load()
-	    {
-	   		 alert("Page is loaded");
-	    }
-	   
-	    
-	    
-	    
-	 // ]]>
+
+		function getFilterEvents(firstFilter, SecondFilter) {
+
+			if (SecondFilter == null) {
+
+				$.ajax({
+					type : "GET",
+					dataType : "json",
+					url : "http://localhost:8081/events/" + firstFilter,
+					success : function(data) {
+						createElements(data);
+					}
+				});
+
+			} else
+				$.ajax({
+					type : "GET",
+					dataType : "json",
+					url : "http://localhost:8081/events/" + firstFilter + "/"
+							+ SecondFilter,
+					success : function(data) {
+						createElements(data);
+					}
+				});
+
+		}
+
+		function createElements(data) {
+			var eventListDiv = document.getElementById("eventListDiv");
+			eventListDiv.innerHTML = "";
+
+			for ( var i in data) {
+				var d = data[i];
+				var tr = document.createElement("tr");
+				var a = document.createElement("a");
+				var name = document.createElement("td");
+				a.innerText = d.eventName;
+				a.setAttribute('href', "http://localhost:8081/event/"
+						+ d.eventId);
+				name.appendChild(a);
+
+				var short_description = document.createElement("td");
+				short_description.innerText = d.shortDescription;
+
+				var event_type = document.createElement("td");
+				event_type.innerText = d.eventType;
+				
+				var paid_type = document.createElement("td");
+				paid_type.innerText = d.paidType;
+
+				tr.appendChild(name);
+				tr.appendChild(short_description);
+				tr.appendChild(event_type);
+				tr.appendChild(paid_type);
+				eventListDiv.appendChild(tr);
+			}
+
+		}
+
+		$('#clear').click(function() {
+			var icerik = document.getElementById("icerik")
+			icerik.innerText = "";
+		});
+
+		function redirect() {
+			var value = document.getElementById("ssearch").value;
+			window.location.href = "/q/" + value;
+		}
+
+		function load() {
+			alert("Page is loaded");
+		}
+
+		// ]]>
 	</script>
 </body>
 
-		<footer class="container-fluid text-center bg-lightgray">
+<footer class="container-fluid text-center bg-lightgray">
 
 	<div class="copyrights" style="margin-top: 25px;">
 		<p>
 			All Rights Reserved <br /> <span>Web Design By: Volkan Dogan</span>
 		</p>
 		<p>
-			<a href="https://www.linkedin.com/in/volkan-do%C4%9Fan-76659b95/" target="_blank">Linkedin<i
-				class="fa fa-linkedin-square" aria-hidden="true"></i> 
+			<a href="https://www.linkedin.com/in/volkan-do%C4%9Fan-76659b95/"
+				target="_blank">Linkedin<i class="fa fa-linkedin-square"
+				aria-hidden="true"></i> 
 			</a>
 		</p>
 	</div>
-		</footer>
+</footer>
 
 </html>

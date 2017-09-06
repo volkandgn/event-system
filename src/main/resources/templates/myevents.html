@@ -82,7 +82,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">User <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Action</a></li>
+						<li><a th:href="@{/myuser}">User Page</a></li>
 						<li><a th:href="@{/myevents}">Registered Events</a></li>
 						<li><a th:href="@{/createdevents}">My Created Events</a></li>
 						<li role="separator" class="divider"></li>
@@ -119,15 +119,11 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 					<td><a href="event" th:text="${event.shortDescription}">Title
 							...</a></td>
 					<td th:text="${event.description}">Text ...</td>
-					<td><a th:href="@{'/deleteevent/'+${event.eventId}}"
-						onclick="return confirm('Are you sure to delete this faculty?')"
-						class="btn btn-danger">Delete</a></td>
-					<td><a th:href="@{'/updateevent/'+${event.eventId}}"
-						onclick="return confirm('Are you sure to update this faculty?')"
-						class="btn btn-danger">Update</a></td>
+					
 				</tr>
 
 			</tbody>
+			
 			<tfoot>
 				<tr>
 					<th>Event name</th>
@@ -145,12 +141,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 	
 	<br/><br/>
-	<div sec:authorize="hasAuthority('user')">
-		Bu Kullanıcın rolü 
-	</div>
-	<div sec:authorize="hasAuthority('admin')">
-		Burayı admin görür
-	</div>
+	
 	
 	</p>
 </body>

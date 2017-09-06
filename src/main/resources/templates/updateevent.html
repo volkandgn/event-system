@@ -63,32 +63,33 @@ textarea {
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-<!-- 				<li><a href="#">Find Events <span class="sr-only">(current)</span></a></li> -->
+				<!-- 				<li><a href="#">Find Events <span class="sr-only">(current)</span></a></li> -->
 				<li><a th:href="@{/eventlist}">Events</a></li>
-<!-- 				<li class="dropdown"><a href="#" class="dropdown-toggle" -->
-<!-- 					data-toggle="dropdown" role="button" aria-haspopup="true" -->
-<!-- 					aria-expanded="false">.... <span class="caret"></span></a> -->
-<!-- 					<ul class="dropdown-menu"> -->
-<!-- 						<li><a href="#">Actions</a></li> -->
-<!-- 						<li><a href="#">zzzzzzs</a></li> -->
-<!-- 						<li><a href="#">Something else here</a></li> -->
-<!-- 						<li role="separator" class="divider"></li> -->
-<!-- 						<li><a href="#">Separated link</a></li> -->
-<!-- 						<li role="separator" class="divider"></li> -->
-<!-- 						<li><a href="#">One more separated link</a></li> -->
+				<!-- 				<li class="dropdown"><a href="#" class="dropdown-toggle" -->
+				<!-- 					data-toggle="dropdown" role="button" aria-haspopup="true" -->
+				<!-- 					aria-expanded="false">.... <span class="caret"></span></a> -->
+				<!-- 					<ul class="dropdown-menu"> -->
+				<!-- 						<li><a href="#">Actions</a></li> -->
+				<!-- 						<li><a href="#">zzzzzzs</a></li> -->
+				<!-- 						<li><a href="#">Something else here</a></li> -->
+				<!-- 						<li role="separator" class="divider"></li> -->
+				<!-- 						<li><a href="#">Separated link</a></li> -->
+				<!-- 						<li role="separator" class="divider"></li> -->
+				<!-- 						<li><a href="#">One more separated link</a></li> -->
 
-<!-- 					</ul></li> -->
+				<!-- 					</ul></li> -->
 			</ul>
-			
-			
-			<div class="navbar-form navbar-right" >
+
+
+			<div class="navbar-form navbar-right">
 				<div class="form-group">
-					<input  type="text" class="form-control" name="search" id="ssearch" placeholder="Search" />
+					<input type="text" class="form-control" name="search" id="ssearch"
+						placeholder="Search" />
 				</div>
-				<button type="submit" class="btn btn-default" onclick="redirect()" >Search</button>
+				<button type="submit" class="btn btn-default" onclick="redirect()">Search</button>
 			</div>
-			
-			
+
+
 
 			<ul class="nav navbar-nav navbar-right">
 				<li><a th:href="@{/event}">Create Event</a></li>
@@ -96,7 +97,7 @@ textarea {
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">User <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Action</a></li>
+						<li><a th:href="@{/myuser}">User Page</a></li>
 						<li><a th:href="@{/myevents}">Registered Events</a></li>
 						<li><a th:href="@{/createdevents}">My Created Events</a></li>
 						<li role="separator" class="divider"></li>
@@ -117,10 +118,9 @@ textarea {
 	<form action="#" class="container" th:action="@{/updateevent}"
 		th:object="${name}" method="post">
 		<!-- 		<input type="hidden" name="_method" value="put" /> -->
-		<input type="hidden" th:field="*{EventId}" />
-		<input type="hidden" th:field="*{registeredUser}" />
-		<input type="hidden" th:field="*{createdBy}" />
-		 -->
+		<input type="hidden" th:field="*{EventId}" /> <input type="hidden"
+			th:field="*{registeredUser}" /> <input type="hidden"
+			th:field="*{createdBy}" /> -->
 		<div class="row">
 			<div class="col-md-6">
 				<div class="form-group">
@@ -158,7 +158,7 @@ textarea {
 
 
 
-				<button type="submit" class="btn btn-default">Submit</button>
+				
 			</div>
 			<div class="col-md-6">
 
@@ -181,10 +181,9 @@ textarea {
 						<div class="radio">
 							<label><input type="radio" name="optradio"
 								th:value="paid" th:field="*{paidType}" id="paid"
-								onclick="freeOrPaid()" />Paid</label>
-								
-								<input type="text" id="textt" th:field="*{price}" />
-								
+								onclick="freeOrPaid()" />Paid</label> <input type="text" id="textt"
+								th:field="*{price}" />
+
 						</div>
 					</form>
 				</div>
@@ -193,21 +192,24 @@ textarea {
 					<h2>Type of Event</h2>
 					<p>Please select the correct one:</p>
 					<div class="form-group">
-							<label for="sel1">Select list (select one):</label> <select
-								class="form-control" id="sel1" th:field="*{eventType}">
-								<option th:value="Fun">Fun</option>
-								<option th:value="Education">Education</option>
-								<option th:value="Concert">Concert</option>
-								<option th:value="Music">Music</option>
-							</select> <br />
+						<label for="sel1">Select list (select one):</label> <select
+							class="form-control" id="sel1" th:field="*{eventType}">
+							<option th:value="Fun">Fun</option>
+							<option th:value="Education">Education</option>
+							<option th:value="Sport">Sport</option>
+							<option th:value="Music">Music</option>
+						</select> <br />
 
-						</div>
-					
+					</div>
+
 				</div>
 
 			</div>
-			<input type="submit" value="Submit" /> <input type="reset"
-				value="Reset" />
+			<button type="submit" class="btn btn-default">Submit</button>
+
+			<!-- 			<input type="submit" class="btn btn-default" value="Submit" />  -->
+
+			<button type="reset" class="btn btn-default">Reset</button>
 		</div>
 
 
@@ -216,7 +218,7 @@ textarea {
 	<br />
 	<br />
 	<br />
-	
+
 	<script>
 		function freeOrPaid() {
 			if (document.getElementById("free").checked == true) {

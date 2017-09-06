@@ -88,7 +88,7 @@ textarea {
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">User <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Action</a></li>
+						<li><a th:href="@{/myuser}">User Page</a></li>
 						<li><a th:href="@{/myevents}">Registered Events</a></li>
 						<li><a th:href="@{/createdevents}">My Created Events</a></li>
 						<li role="separator" class="divider"></li>
@@ -174,7 +174,7 @@ textarea {
 	<div th:if="${registered} == var">
 		<p>
 			<a th:href="@{'/unregister/'+${name.eventId}}" th:object="${event}" 
-				onclick="return confirm('Are you sure to delete this faculty?')"
+				onclick="return confirm('Are you sure to unregister this event?')"
 				class="btn btn-danger">UnRegister</a>
 		</p>
 	</div>
@@ -183,7 +183,7 @@ textarea {
 
 		<p>
 			<a th:href="@{'/register/'+${name.eventId}}"
-				onclick="return confirm('Are you sure to delete this faculty?')"
+				onclick="return confirm('Are you sure to register this event?')"
 				class="btn btn-danger">Register</a>
 		</p>
 	</div>
